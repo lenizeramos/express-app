@@ -66,6 +66,20 @@ app.put("/posts/:id", (req, res) => {
         });
     }
 });
+app.delete("/posts/:id", (req, res) => {
+    const { id } = req.params;
+    const index = posts.findIndex((item) => item.id === Number(id));
+    if (index !== -1) {
+        posts.splice(index, 1);
+        res.status(204).send();
+    }
+    else {
+        res.status(404).json({
+            message: "Item not found! :(",
+            status: "Not okay",
+        });
+    }
+});
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });
