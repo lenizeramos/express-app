@@ -73,6 +73,22 @@ app.post("/posts", (req: Request, res: Response) => {
   res.status(201).json(newPost);
 });
 
+app.put("/posts/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { title, body } = req.body;
+  const targetItem = posts.find((item) => item.id === Number(id));
+
+  if (targetItem) {
+    targetItem.title = title;
+    targetItem.body = body;
+    res.status(200).json(`Post id = ${targetItem.id}, updated`);
+  } else {
+    res.status(404).json({
+      message: "Item not found! :(",
+      status: "Not okay",
+    });
+  }
+});
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
