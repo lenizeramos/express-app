@@ -1,6 +1,4 @@
-import express, { Response, Request, NextFunction } from "express";
-import * as path from "path";
-import * as fs from "fs";
+import express, { Response, Request} from "express";
 
 const app = express();
 const port = 3000;
@@ -31,18 +29,6 @@ const posts: Post[] = [
     body: "body3",
   },
 ];
-
-/* app.get("/", (req: Request, res: Response) => {
-  const filePath = path.join(__dirname, "..", "index.html");
-
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.status(404).send("<h1>File Not Found</h1>");
-    }
-
-    res.status(200).type("text/html").send(data);
-  });
-}); */
 
 app.get("/posts", (req: Request, res: Response) => {
   res.send(posts);
