@@ -5,6 +5,8 @@ import * as fs from "fs";
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 interface Post {
   id: number;
   title: string;
@@ -42,11 +44,11 @@ const posts: Post[] = [
   });
 }); */
 
-app.get("/posts", (req, res) => {
+app.get("/posts", (req: Request, res: Response) => {
   res.send(posts);
 });
 
-app.get("/posts/:id", (req, res) => {
+app.get("/posts/:id", (req: Request, res: Response) => {
   const { id } = req.params;
 
   const targetItem = posts.find((item) => item.id === Number(id));
@@ -59,10 +61,18 @@ app.get("/posts/:id", (req, res) => {
   } else {
     res.status(404).json({
       message: "Item not found! :(",
-      status: "NOT okay",
+      status: "Not okay",
     });
   }
 });
+
+app.post("/posts", (req: Request, res: Response) => {
+  const { title, body } = req.body;
+  const newPost: Post = { id: nextId++, title, body };
+  posts.push(newPost);
+  res.status(201).json(newPost);
+});
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

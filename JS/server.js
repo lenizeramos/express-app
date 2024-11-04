@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const port = 3000;
+app.use(express_1.default.json());
 let nextId = 4;
 const posts = [
     {
@@ -39,9 +40,15 @@ app.get("/posts/:id", (req, res) => {
     else {
         res.status(404).json({
             message: "Item not found! :(",
-            status: "NOT okay",
+            status: "Not okay",
         });
     }
+});
+app.post("/posts", (req, res) => {
+    const { title, body } = req.body;
+    const newPost = { id: nextId++, title, body };
+    posts.push(newPost);
+    res.status(201).json(newPost);
 });
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
