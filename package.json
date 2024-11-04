@@ -1,0 +1,19 @@
+{
+  "name": "express-app-with-crud-lenizeramos",
+  "version": "1.0.0",
+  "description": "This project focuses on creating an Express server that simulates endpoints similar to those found in [JSON Placeholder](https://jsonplaceholder.typicode.com). The objective is to replicate `/posts` and `/comments` endpoints.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.8.7"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
