@@ -1,3 +1,5 @@
+> **Note:** This repository is a personal backup of coursework originally developed as part of my studies at Cornerstone College. It was cloned from a institutional and private repository to preserve my contributions and development history.
+
 # Express Server
 
 This project focuses on creating an Express server that simulates endpoints similar to those found in [JSON Placeholder](https://jsonplaceholder.typicode.com). The objective is to replicate `/posts` and `/comments` endpoints.
